@@ -69,7 +69,9 @@
               ref="picker"
               v-bind="currentComponentProps"
               @select="handleSelectDate"
-            ></component>
+            >
+              <template v-for="slot in Object.keys($scopedSlots)" :slot="slot" slot-scope="scope"><slot :name="slot" v-bind="scope"/></template>
+            </component>
           </slot>
         </div>
         <div v-if="hasSlot('footer') || confirm" :class="`${prefixClass}-datepicker-footer`">
@@ -245,6 +247,14 @@ export default {
         return [];
       },
     },
+    isMarked: {
+      type: Boolean,
+      default: false
+    },
+    markedDates: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     return {
@@ -252,6 +262,7 @@ export default {
       currentValue: null,
       userInput: null,
       defaultOpen: false,
+      scopedSlots: null
     };
   },
   computed: {
@@ -318,6 +329,11 @@ export default {
         this.currentValue = val;
       },
     },
+  },
+  mounted() {
+    console.log(this.$slots.cell)
+    console.log(this.$scopedSlots.cell)
+    // this.scopedSlots = this.$scopedSlots
   },
   methods: {
     handleClickOutSide(evt) {
@@ -503,6 +519,6 @@ export default {
     getLocaleFieldValue(path) {
       return getLocaleFieldValue(path, this.locale);
     },
-  },
+  }
 };
 </script>

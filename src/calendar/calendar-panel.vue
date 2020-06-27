@@ -90,8 +90,13 @@
         :show-week-number="typeof showWeekNumber === 'boolean' ? showWeekNumber : type === 'week'"
         :get-cell-classes="getDateClasses"
         :get-row-classes="getWeekState"
+        :is-marked="true"
+        :marked-dates="markedDates"
+        v-bind="$scopedSlots"
         @select="handleSelectDate"
-      ></table-date>
+      >
+        <template v-for="slot in Object.keys($scopedSlots)" :slot="slot" slot-scope="scope"><slot :name="slot" v-bind="scope"/></template>
+      </table-date>
     </div>
   </div>
 </template>
@@ -170,6 +175,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    isMarked: {
+      type: Boolean,
+      default: false
+    },
+    markedDates: {
+      type: Array,
+      default: () => []
+    }
   },
   data() {
     const panels = ['date', 'month', 'year'];

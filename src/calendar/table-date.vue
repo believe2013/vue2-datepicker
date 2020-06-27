@@ -23,7 +23,9 @@
           :class="getCellClasses(cell.day)"
           :title="getCellTitle(cell.day)"
         >
-          <div>{{ cell.text }}</div>
+          <slot name="cell" :cell="cell" :date="getCellTitle(cell.day)">
+            <div>{{ cell.text }}</div>
+          </slot>
         </td>
       </tr>
     </tbody>
@@ -82,6 +84,14 @@ export default {
         return [];
       },
     },
+    isMarked: {
+      type: Boolean,
+      default: false
+    },
+    markedDates: {
+      type: Array,
+      default: () => []
+    }
   },
   computed: {
     firstDayOfWeek() {
@@ -123,6 +133,10 @@ export default {
       return chunk(arr, 7);
     },
   },
+  mounted() {
+    console.log(this.$slots.cell)
+    console.log(this.$scopedSlots.cell)
+  },
   methods: {
     formatDate(date, fmt) {
       return format(date, fmt, { locale: this.t('formatLocale') });
@@ -150,6 +164,6 @@ export default {
       const date = createDate(year, month, day);
       return this.getWeek(date, this.t('formatLocale'));
     },
-  },
+  }
 };
 </script>

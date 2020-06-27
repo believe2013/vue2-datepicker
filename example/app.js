@@ -3,6 +3,7 @@
 import fs from 'fs';
 import Container from './helper/container.vue';
 import Card from './helper/card.vue';
+import Marked from './demo/Marked.vue';
 import Basic from './demo/Basic.vue';
 import ValueType from './demo/ValueType.vue';
 import Range from './demo/Range.vue';
@@ -19,6 +20,11 @@ import docEn from './en.md';
 import docZhCN from './zh-cn.md';
 
 const components = [
+  {
+    id: 'Marked',
+    component: Marked,
+    code: fs.readFileSync(`${__dirname}/demo/Marked.vue`, 'utf8'),
+  },
   {
     id: 'Basic',
     component: Basic,
