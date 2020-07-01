@@ -193,6 +193,7 @@
   box-sizing: border-box;
   .cell {
     cursor: pointer;
+    text-align: center !important;
     &:hover {
       color: $calendar-hover-color;
       background-color: $calendar-hover-background-color;

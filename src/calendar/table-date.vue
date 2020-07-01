@@ -134,8 +134,8 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$slots.cell)
-    console.log(this.$scopedSlots.cell)
+    /*console.log(this.$slots.cell)
+    console.log(this.$scopedSlots.cell)*/
   },
   methods: {
     formatDate(date, fmt) {

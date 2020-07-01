@@ -25,7 +25,7 @@ const components = [
     component: Marked,
     code: fs.readFileSync(`${__dirname}/demo/Marked.vue`, 'utf8'),
   },
-  {
+  /*{
     id: 'Basic',
     component: Basic,
     code: fs.readFileSync(`${__dirname}/demo/Basic.vue`, 'utf8'),
@@ -79,7 +79,7 @@ const components = [
     id: 'ControlOpen',
     component: ControlOpen,
     code: fs.readFileSync(`${__dirname}/demo/ControlOpen.vue`, 'utf8'),
-  },
+  },*/
 ];
 
 function transformMd(text) {

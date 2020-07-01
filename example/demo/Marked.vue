@@ -1,11 +1,27 @@
 <template>
     <div class="box">
-        <section>
+        <!--<section>
             <p>Marked Dates</p>
             <date-picker
                     v-model="value1"
                     format="YYYY-MM-DD"
                     type="date"
+                    placeholder="Select date"
+                    :is-marked="true"
+                    :marked-dates="markedDates"
+            >
+                <template v-slot:cell="{cell, date}">
+                    <div :style="styleCell(cell, date)">{{ cell.text }}</div>
+                </template>
+            </date-picker>
+        </section>-->
+        <section>
+            <p>Marked Dates Range</p>
+            <date-picker
+                    v-model="value1"
+                    format="YYYY-MM-DD"
+                    type="date"
+                    :range="true"
                     placeholder="Select date"
                     :is-marked="true"
                     :marked-dates="markedDates"
@@ -24,10 +40,10 @@
     name: 'Marked',
     data() {
       return {
-        value1: null,
+        value1: [],
         markedDates: [
           {
-            date: "2020-06-26",
+            date: "2020-07-26",
             marker: {
                 color: "#B0BEC5",
                 display_name: "Regular",

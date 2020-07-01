@@ -331,8 +331,8 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$slots.cell)
-    console.log(this.$scopedSlots.cell)
+    /*console.log(this.$slots.cell)
+    console.log(this.$scopedSlots.cell)*/
     // this.scopedSlots = this.$scopedSlots
   },
   methods: {

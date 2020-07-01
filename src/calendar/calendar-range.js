@@ -112,6 +112,10 @@ export default {
       return classes;
     },
   },
+  mounted() {
+    console.log(this.$slots.cell)
+    console.log(this.$scopedSlots.cell)
+  },
   render() {
     const calendarRange = this.calendars.map((calendar, index) => {
       const props = {
@@ -127,7 +131,9 @@ export default {
         select: this.handleSelect,
         'update:calendar': index === 0 ? this.updateStartCalendar : this.updateEndCalendar,
       };
-      return <calendar-panel {...{ props, on }}></calendar-panel>;
+
+      const scopedSlots = this.$scopedSlots
+      return <calendar-panel {...{ props, on, scopedSlots }}></calendar-panel>;
     });
 
     const { prefixClass } = this;
