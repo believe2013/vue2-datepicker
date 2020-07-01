@@ -132,7 +132,10 @@ export default {
         'update:calendar': index === 0 ? this.updateStartCalendar : this.updateEndCalendar,
       };
 
-      const scopedSlots = this.$scopedSlots
+      const scopedSlots = {
+        ...this.$scopedSlots
+      }
+
       return <calendar-panel {...{ props, on, scopedSlots }}></calendar-panel>;
     });
 

@@ -1,20 +1,18 @@
 <template>
     <div class="box">
-        <!--<section>
+        <section>
             <p>Marked Dates</p>
             <date-picker
                     v-model="value1"
                     format="YYYY-MM-DD"
                     type="date"
                     placeholder="Select date"
-                    :is-marked="true"
-                    :marked-dates="markedDates"
             >
                 <template v-slot:cell="{cell, date}">
                     <div :style="styleCell(cell, date)">{{ cell.text }}</div>
                 </template>
             </date-picker>
-        </section>-->
+        </section>
         <section>
             <p>Marked Dates Range</p>
             <date-picker
@@ -23,8 +21,6 @@
                     type="date"
                     :range="true"
                     placeholder="Select date"
-                    :is-marked="true"
-                    :marked-dates="markedDates"
             >
                 <template v-slot:cell="{cell, date}">
                     <div :style="styleCell(cell, date)">{{ cell.text }}</div>
@@ -36,8 +32,10 @@
 
 
 <script>
+
   export default {
     name: 'Marked',
+    components: {},
     data() {
       return {
         value1: [],
